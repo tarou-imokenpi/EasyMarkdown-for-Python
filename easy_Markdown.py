@@ -12,7 +12,7 @@ class EasyMarkdown:
     def get_MD_text(self):
         return self.MD_text
 
-    def output_MD(self, fileName: str = "output_MD", root: str = "./"):
+    def save_MD(self, fileName: str = "output", root: str = "./"):
         with open(root + fileName + ".md", mode="w", encoding="UTF-8") as f:
             f.write(self.MD_text)
 
@@ -40,10 +40,23 @@ class EasyMarkdown:
     def add_InlineCode(text: str):
         pass
 
-    def add_CodeBlock(self, code_type: codeBlock_list = "", text=""):
-        self.MD_text += "```"
-        self.MD_text += code_type + "\n"
-        self.MD_text += text + "\n"
+    def add_CodeBlock(
+        self,
+        From: Literal["text", "file"] = "text",
+        code_type: codeBlock_list = "",
+        text="",
+        path: str = "",
+    ):
+        self.MD_text += "```" + code_type + "\n"
+
+        if From == "text":
+            self.MD_text += text + "\n"
+        elif From == "file":
+            text = text  # ここに読み込む処理
+            self.MD_text += text + "\n"
+        else:
+            raise ValueError("Invalid value.")
+
         self.MD_text += "```" + "\n"
 
     def add_Link(URL: str, title: str):
