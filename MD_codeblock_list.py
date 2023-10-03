@@ -3,6 +3,7 @@ from typing import Literal
 codeBlock_list = Literal[
     "abap",
     "actionscript",
+    "bash",
     "c",
     "clojure",
     "coffeescript",
