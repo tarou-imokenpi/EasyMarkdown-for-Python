@@ -17,8 +17,11 @@ class EasyMarkdown:
             f.write(self.MD_text)
 
     def add_Header(
-        self, level: Literal[1, 2, 3, 4, 5, 6] = 1, text: str = "HeaderText"
+        self,
+        level: Literal["1", "2", "3", "4", "5", "6"] | int = "1",
+        text: str = "HeaderText",
     ):
+        level = int(level)
         if level == 1:
             self.MD_text += "# "
         elif level == 2:
@@ -34,8 +37,29 @@ class EasyMarkdown:
 
         self.MD_text += text + "\n\n"
 
-    def add_CodeBlock(self, code_type: codeBlock_list, text):
+    def add_InlineCode(text: str):
+        pass
+
+    def add_CodeBlock(self, code_type: codeBlock_list = "", text=""):
         self.MD_text += "```"
         self.MD_text += code_type + "\n"
         self.MD_text += text + "\n"
         self.MD_text += "```" + "\n"
+
+    def add_Link(URL: str, title: str):
+        pass
+
+    def add_RawMarkdown(text: str):
+        pass
+
+    def add_Table():
+        pass
+
+    def add_Image(path: str):
+        pass
+
+    def add_Line() -> None:
+        pass
+
+    def add_Comment(text: str):
+        pass
