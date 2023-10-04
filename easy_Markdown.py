@@ -1,26 +1,25 @@
-from typing import Literal
+from typing import Literal, Union
 from MD_codeblock_list import codeBlock_list
-
-header_text = []
-result_text = "実行結果"
+import aiofiles
+import asyncio
 
 
 class EasyMarkdown:
     def __init__(self) -> None:
         self.MD_text = ""
 
-    def get_MD_text(self):
+    def get_MD_text(self) -> str:
         return self.MD_text
 
-    def save_MD(self, fileName: str = "output", root: str = "./"):
+    def save_file(self, fileName: str = "output", root: str = "./") -> None:
         with open(root + fileName + ".md", mode="w", encoding="UTF-8") as f:
             f.write(self.MD_text)
 
     def add_Header(
         self,
-        level: Literal["1", "2", "3", "4", "5", "6"] | int = "1",
+        level: Union[int, str] = 1,
         text: str = "HeaderText",
-    ):
+    ) -> None:
         level = int(level)
         if level == 1:
             self.MD_text += "# "
@@ -37,7 +36,7 @@ class EasyMarkdown:
 
         self.MD_text += text + "\n\n"
 
-    def add_InlineCode(text: str):
+    def add_InlineCode(text: str) -> None:
         pass
 
     def add_CodeBlock(
@@ -46,12 +45,19 @@ class EasyMarkdown:
         code_type: codeBlock_list = "",
         text="",
         path: str = "",
-    ):
+    ) -> None:
         self.MD_text += "```" + code_type + "\n"
 
         if From == "text":
             self.MD_text += text + "\n"
         elif From == "file":
+            asyncio.run(async_readFile())
+
+            async def async_readFile():
+                async with aiofiles.open("filename", mode="r") as f:
+                    contents = await f.read()
+                    print(contents)
+
             text = text  # ここに読み込む処理
             self.MD_text += text + "\n"
         else:
@@ -59,20 +65,20 @@ class EasyMarkdown:
 
         self.MD_text += "```" + "\n"
 
-    def add_Link(URL: str, title: str):
+    def add_Link(URL: str, title: str) -> None:
         pass
 
-    def add_RawMarkdown(text: str):
+    def add_RawMarkdown(text: str) -> None:
         pass
 
-    def add_Table():
+    def add_Table() -> None:
         pass
 
-    def add_Image(path: str):
+    def add_Image(path: str) -> None:
         pass
 
     def add_Line() -> None:
         pass
 
-    def add_Comment(text: str):
+    def add_Comment(text: str) -> None:
         pass
