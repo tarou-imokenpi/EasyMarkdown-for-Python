@@ -50,7 +50,7 @@ class EasyMarkdown:
             self.MD_text += text + "\n"
 
         elif From == "file":
-            with open(file_path, mode="r") as f:
+            with open(file_path, mode="r", encoding="UTF-8") as f:
                 self.MD_text += f.read() + "\n"
 
         else:
