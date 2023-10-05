@@ -1,5 +1,4 @@
 from typing import Literal, Union
-from MD_codeblock_list import codeBlock_list
 
 
 class EasyMarkdown:

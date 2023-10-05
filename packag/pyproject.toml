@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "EasyMarkdown"
-version = "0.0.1"
+version = "0.0.2"
 authors = [
   { name="shotaro", email="taro06360@gmail.com" },
 ]
