@@ -1,6 +1,6 @@
 # EasyMarkdown
 
-# install
+# Install
 ```
 pip install EasyMarkdown
 ```
@@ -33,5 +33,12 @@ markdown.save_file()
 print("hello")
 ```
 
+# Exampl add_CodeBlock 
 
+```python
+from EasyMarkdown import EasyMarkdown
 
+markdown = EasyMarkdown()
+
+markdown.add_CodeBlock(From="file", code_type="python", file_path=file_path)
+```
