@@ -1,7 +1,5 @@
 from typing import Literal, Union
 from MD_codeblock_list import codeBlock_list
-import aiofiles
-import asyncio
 
 
 class EasyMarkdown:
@@ -43,23 +41,18 @@ class EasyMarkdown:
         self,
         From: Literal["text", "file"] = "text",
         code_type: codeBlock_list = "",
-        text="",
-        path: str = "",
+        text: str = "",
+        file_path: str = "",
     ) -> None:
         self.MD_text += "```" + code_type + "\n"
 
         if From == "text":
             self.MD_text += text + "\n"
+
         elif From == "file":
-            asyncio.run(async_readFile())
+            with open(file_path, mode="r") as f:
+                self.MD_text += f.read() + "\n"
 
-            async def async_readFile():
-                async with aiofiles.open("filename", mode="r") as f:
-                    contents = await f.read()
-                    print(contents)
-
-            text = text  # ここに読み込む処理
-            self.MD_text += text + "\n"
         else:
             raise ValueError("Invalid value.")
 
