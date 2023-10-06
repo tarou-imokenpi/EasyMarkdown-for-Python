@@ -54,21 +54,19 @@ class EasyMarkdown:
         self.MD_text += "```" + "\n"
 
     def add_Link(self, title: str, URL: str) -> None:
-        pass
+        self.MD_text += f"[{title}]" + f"({URL})"
 
     def add_RawMarkdown(self, text: str) -> None:
         self.MD_text += text
 
-    def add_Table(
-        self, row: int, coumum: int, Table_list: list[list[Union[int, str]]]
-    ) -> None:
+    def add_Table(self, row: int, coumum: int, title: list[str], data: list) -> None:
         pass
 
-    def add_Image(self, path: str) -> None:
-        pass
+    def add_Image(self, path: str, alt: str) -> None:
+        self.MD_text += f"![{alt}]" + f"({path})"
 
     def add_Line(self) -> None:
-        pass
+        self.MD_text += "- - -"
 
     def add_Comment(self, text: str) -> None:
-        pass
+        self.MD_text += f"<!-- {text} -->"
