@@ -32,8 +32,8 @@ class EasyMarkdown:
             self.MD_text += "###### "
         self.MD_text += text + "\n\n"
 
-    def add_InlineCode(text: str) -> None:
-        pass
+    def add_InlineCode(self, text: str) -> None:
+        self.MD_text += "`" + text + "`"
 
     def add_CodeBlock(
         self,
@@ -57,7 +57,7 @@ class EasyMarkdown:
         pass
 
     def add_RawMarkdown(self, text: str) -> None:
-        pass
+        self.MD_text += text
 
     def add_Table(
         self, row: int, coumum: int, Table_list: list[list[Union[int, str]]]
