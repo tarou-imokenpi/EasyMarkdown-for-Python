@@ -16,7 +16,7 @@ class EasyMarkdown:
     def add_Header(
         self,
         level: Literal[1, 2, 3, 4, 5, 6] = 1,
-        text: str = "HeaderText",
+        text: str = "",
     ) -> None:
         if level == 1:
             self.MD_text += "# "
